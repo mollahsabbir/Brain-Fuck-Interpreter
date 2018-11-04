@@ -1,31 +1,30 @@
-/* Brainfuck Interpreter
+/* Brainfuck Interpreter in C
  * By Sabbir Mollah
- * Last change: 10/05/2017
  */
 
 #include<stdio.h>
 #include<stdlib.h>
+#include <string.h>
 
-typedef struct{
+typedef struct NEST{
     long codePosition;      //File pointer
-    int apt;        //Array Pointer
+    int apt;                //Array Pointer, points to the point where nesting starts
     struct NEST *next;
 }NEST;
 
-void displayArr(char ch[], int n){      //Function helps to debug
-    int i;
-    for(i=0; i<n; i++){
-        printf("%d ",ch[i]);
-    }
-    printf("\n");
-}
 
 
 int main(int argc, char *argv[]) {
+    //Memory allocation for the interpreter
     char arr[3000];
     int arrPoint = 0, nestLayer = 0;
     memset(arr,'\0',3000);
-    ///displayArr(arr,10);         ///msg
+    
+    //check command line arguments number
+    if(argc != 2){
+        printf("Usage: BFInterpreter <fileName>");
+        return 1;
+    }
 
     char *fileName = argv[1];
     FILE *fp;
@@ -36,6 +35,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    //Structs to maintain nested loops
     NEST *root, *curr, *temp;
     root = ( NEST *) malloc( sizeof(NEST) );
     root->next = NULL;
@@ -47,6 +47,7 @@ int main(int argc, char *argv[]) {
             break;
         }
 
+        //Move to next cur
         fseek(fp, -1L, SEEK_CUR);
 
         int tempInput;

@@ -1,8 +1,22 @@
-# BFInterpreter
+# Brain-Fuck Interpreter
 
-If you want to know about BrainFuck programming language, you may read this blog (Bangla).
-http://wp.me/p8ZA3L-x
+Brain Fuck is an esoteric programming language. This is my attempt to write an interpreter in C for this language.
+I have a Bangla blog about it  [here](http://wp.me/p8ZA3L-x).
 
+# Usage
+
+```
+BFInterpreter <fileName>
+```
 This Program takes a command line input containing the name of the file that contains brain fuck programming language source code and then interprets it. 
 
-The nested loop features of BF language were handles by using Linked List.
+# Running the tests
+
+Here is a Hello World program in Brain Fuck.
+```
+++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.+++++++..+++.>++.<<+++++++++++++++.>.+++.------.--------.>+.>.
+```
+Source: [Wikipedia.](https://en.wikipedia.org/wiki/Brainfuck)
+
+
+
